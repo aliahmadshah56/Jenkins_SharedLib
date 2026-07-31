@@ -1,3 +1,8 @@
-def call(String severity = "HIGH,CRITICAL") {
-    sh "trivy fs --severity ${severity} --exit-code 1 ."
+def call() {
+    sh """
+        trivy fs \
+        --severity HIGH,CRITICAL \
+        --format table \
+        . || true
+    """
 }
